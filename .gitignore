@@ -1,0 +1,6 @@
+esdata/
+
+*.log
+
+.idea/
+.vscode/
