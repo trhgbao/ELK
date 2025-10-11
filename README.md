@@ -2,9 +2,6 @@
 
 Đây là một dự án demo minh họa cách sử dụng **ELK Stack (Elasticsearch, Logstash, Kibana)** để xây dựng một hệ thống giám sát và quản lý log tập trung cho máy chủ web Nginx. Toàn bộ hệ thống được triển khai dễ dàng thông qua **Docker Compose**.
 
-![Ảnh chụp màn hình Dashboard giám sát Nginx](link_den_anh_dashboard_cua_ban.png)
-*(Mẹo: Hãy chụp một ảnh màn hình Dashboard hoàn chỉnh của bạn, upload lên đâu đó hoặc ngay trong repo GitHub, rồi thay thế `link_den_anh_dashboard_cua_ban.png` bằng đường dẫn thật)*
-
 ---
 
 ## 🚀 Tính năng nổi bật
@@ -68,7 +65,7 @@ Luồng di chuyển của dữ liệu log trong dự án này rất đơn giản
 
 ---
 
-## ใช้งาน Hướng dẫn Sử dụng
+## Hướng dẫn Sử dụng
 
 1.  **Tạo dữ liệu log mẫu:**
     -   Mở trình duyệt và truy cập vào máy chủ Nginx tại: `http://localhost:8080`
