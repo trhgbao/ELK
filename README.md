@@ -2,8 +2,7 @@
 
 Dự án này trình bày một giải pháp hoàn chỉnh để thu thập, giám sát và phân tích log hệ thống Nginx trong thời gian thực bằng cách sử dụng ELK Stack (Elasticsearch, Logstash, Kibana). Điểm nổi bật của dự án là việc tích hợp một mô hình Machine Learning (Isolation Forest) để tự động phát hiện các hành vi bất thường như tấn công Brute-force và quét lỗ hổng web.
 
-![Kibana Anomaly Dashboard Demo](https://i.imgur.com/your-dashboard-screenshot.png) 
-*(Gợi ý: Hãy chụp một bức ảnh đẹp của Dashboard "Anomaly Detection" và thay thế link trên)*
+![Kibana Anomaly Dashboard Demo]
 
 ---
 
