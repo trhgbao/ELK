@@ -1,6 +1,20 @@
-esdata/
+# Môi trường ảo của Python
+.venv/
+venv/
 
-*.log
+# Thư mục cache của Python
+__pycache__/
+*.pyc
 
-.idea/
+# Các file dữ liệu lớn. Chỉ giữ lại code, không giữ data.
+data/
+
+# Các file model đã huấn luyện. Chỉ giữ code, không giữ model.
+models/
+
+# Thư mục cấu hình của IDE
 .vscode/
+.idea/
+
+# File hệ điều hành
+.DS_Store
