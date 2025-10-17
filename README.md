@@ -131,9 +131,7 @@ python -m ipykernel install --user --name="anomaly-detection-venv" --display-nam
     ```
 
 2.  **Huấn luyện mô hình:**
-    - Khởi động Jupyter: `jupyter notebook`
-    - Mở các file trong thư mục `notebooks/`, **chọn kernel "Python (Anomaly Detection)"** (`Kernel > Change kernel`).
-    - Chạy lần lượt các notebook `01_preprocess.ipynb` và `02_train_model.ipynb`.
+    - Chạy lần lượt các notebook `01_preprocess.ipynb` và `02_train_model.ipynb`(thay đổi kernel sang "Python (Anomaly Detection)).
 
 **c. Đẩy kết quả phân tích lên Elasticsearch**
 ```bash
