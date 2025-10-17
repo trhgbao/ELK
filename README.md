@@ -95,14 +95,21 @@ Lệnh này sẽ build các image cần thiết và khởi động 4 container (
 ```bash
 docker-compose up -d```
 *Lưu ý: Lần đầu khởi động có thể mất vài phút để tải các image từ Docker Hub. Hãy chờ đến khi tất cả các service báo "done" hoặc "healthy".*
+```
 
 **5. Tạo dữ liệu log:**
-Mở một terminal mới, kích hoạt môi trường ảo và chạy script `log_generator.py` trong vài phút.
+Để hệ thống có dữ liệu để phân tích, hãy chạy script mô phỏng traffic trong vài phút.
+
+Mở một terminal mới và di chuyển vào thư mục dự án.
+
 ```bash
+# Kích hoạt môi trường ảo
 source .venv/bin/activate
+```bash
+# c. Chạy script tạo log
 python scripts/log_generator.py
 ```
-*Script này sẽ mô phỏng traffic bình thường và các cuộc tấn công để tạo dữ liệu cho hệ thống.*
+*Script này sẽ mô phỏng cả traffic bình thường và các cuộc tấn công. Hãy để nó chạy khoảng 3-5 phút rồi dừng lại bằng `Ctrl + C`.*
 
 **6. Chạy Pipeline AI và Phân tích**
 
