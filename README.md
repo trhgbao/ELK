@@ -82,7 +82,7 @@ cd project-anomaly-detection
 **2. Tạo và kích hoạt môi trường ảo Python:**
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate
+source venv/bin/activate
 ```
 
 **3. Cài đặt các thư viện Python cần thiết:**
@@ -104,10 +104,10 @@ Mở một terminal mới và di chuyển vào thư mục dự án.
 
 ```bash
 # Kích hoạt môi trường ảo
-source .venv/bin/activate
+source venv/bin/activate
 ```bash
 # c. Chạy script tạo log
-python scripts/log_generator.py
+python3 scripts/log_generator.py
 ```
 *Script này sẽ mô phỏng cả traffic bình thường và các cuộc tấn công. Hãy để nó chạy khoảng 3-5 phút rồi dừng lại bằng `Ctrl + C`.*
 
@@ -117,13 +117,13 @@ Thực thi các script sau theo thứ tự để xử lý log, chạy mô hình 
 
 ```bash
 # Bước 1: Kéo log từ Elasticsearch về máy
-python scripts/fetch_logs.py
+python3 scripts/fetch_logs.py
 
 # Bước 2 (Tùy chọn): Khám phá chi tiết cách xử lý và huấn luyện mô hình
 # jupyter notebook notebooks/
 
 # Bước 3: Đẩy dữ liệu đã được gán nhãn bởi AI vào index 'nginx-anomalies'
-python scripts/push_to_es.py
+python3 scripts/push_to_es.py
 ```
 *Lưu ý: Bạn cần chạy các Notebook `01_preprocess.ipynb` và `02_train_model.ipynb` ít nhất một lần để tạo ra các file dữ liệu cần thiết cho `push_to_es.py`.*
 
