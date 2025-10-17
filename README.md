@@ -106,27 +106,40 @@ Mở một terminal mới và di chuyển vào thư mục dự án.
 # Kích hoạt môi trường ảo
 source venv/bin/activate
 ```bash
-# c. Chạy script tạo log
+# Chạy script tạo log
 python3 scripts/log_generator.py
 ```
 *Script này sẽ mô phỏng cả traffic bình thường và các cuộc tấn công. Hãy để nó chạy khoảng 3-5 phút rồi dừng lại bằng `Ctrl + C`.*
 
-**6. Chạy Pipeline AI và Phân tích**
+***6. Chạy Pipeline AI**
 
-Thực thi các script sau theo thứ tự để xử lý log, chạy mô hình AI và đẩy kết quả phân tích trở lại Elasticsearch.
+Thực thi pipeline để lấy dữ liệu, huấn luyện mô hình và đẩy kết quả phân tích trở lại Elasticsearch.
 
+**a. Chuẩn bị môi trường cho Jupyter (Chỉ làm một lần)**
+
+Để Jupyter Notebook nhận đúng môi trường ảo của dự án, hãy chạy lệnh sau:
 ```bash
-# Bước 1: Kéo log từ Elasticsearch về máy
-python3 scripts/fetch_logs.py
-
-# Bước 2 (Tùy chọn): Khám phá chi tiết cách xử lý và huấn luyện mô hình
-# jupyter notebook notebooks/
-
-# Bước 3: Đẩy dữ liệu đã được gán nhãn bởi AI vào index 'nginx-anomalies'
-python3 scripts/push_to_es.py
+pip install ipykernel
+python -m ipykernel install --user --name="anomaly-detection-venv" --display-name="Python (Anomaly Detection)"
 ```
-*Lưu ý: Bạn cần chạy các Notebook `01_preprocess.ipynb` và `02_train_model.ipynb` ít nhất một lần để tạo ra các file dữ liệu cần thiết cho `push_to_es.py`.*
 
+**b. Lấy dữ liệu và Huấn luyện mô hình**
+
+1.  **Lấy dữ liệu log:**
+    ```bash
+    python scripts/fetch_logs.py
+    ```
+
+2.  **Huấn luyện mô hình:**
+    - Khởi động Jupyter: `jupyter notebook`
+    - Mở các file trong thư mục `notebooks/`, **chọn kernel "Python (Anomaly Detection)"** (`Kernel > Change kernel`).
+    - Chạy lần lượt các notebook `01_preprocess.ipynb` và `02_train_model.ipynb`.
+
+**c. Đẩy kết quả phân tích lên Elasticsearch**
+```bash
+python scripts/push_to_es.py
+```
+*Sau bước này, index `nginx-anomalies` sẽ được tạo ra, chứa dữ liệu đã được AI gán nhãn.*
 **7. Khám phá kết quả trên Kibana**
 
 Trực quan hóa dữ liệu đã được phân tích trên giao diện Kibana.
