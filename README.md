@@ -104,23 +104,34 @@ python scripts/log_generator.py
 ```
 *Script này sẽ mô phỏng traffic bình thường và các cuộc tấn công để tạo dữ liệu cho hệ thống.*
 
-**6. Chạy Pipeline AI:**
-Đây là bước thực thi toàn bộ quy trình Machine Learning.```bash
-# Lấy log từ Elasticsearch về file CSV
+**6. Chạy Pipeline AI và Phân tích**
+
+Thực thi các script sau theo thứ tự để xử lý log, chạy mô hình AI và đẩy kết quả phân tích trở lại Elasticsearch.
+
+```bash
+# Bước 1: Kéo log từ Elasticsearch về máy
 python scripts/fetch_logs.py
 
-# (Tùy chọn) Mở các notebook để xem chi tiết các bước xử lý và huấn luyện
-# jupyter notebook
+# Bước 2 (Tùy chọn): Khám phá chi tiết cách xử lý và huấn luyện mô hình
+# jupyter notebook notebooks/
 
-# Đẩy kết quả đã được gán nhãn bởi AI vào một index mới
+# Bước 3: Đẩy dữ liệu đã được gán nhãn bởi AI vào index 'nginx-anomalies'
 python scripts/push_to_es.py
 ```
+*Lưu ý: Bạn cần chạy các Notebook `01_preprocess.ipynb` và `02_train_model.ipynb` ít nhất một lần để tạo ra các file dữ liệu cần thiết cho `push_to_es.py`.*
 
-**7. Truy cập và khám phá trên Kibana:**
-- Mở trình duyệt và truy cập: `http://localhost:5601`
-- **Tạo Index Pattern:**
-    - Vào **Stack Management > Index Patterns > Create index pattern**.
-    - Tạo một pattern cho log gốc: `nginx-*`.
-    - Tạo một pattern khác cho log đã qua xử lý bởi AI: `nginx-anomalies*`.
+**7. Khám phá kết quả trên Kibana**
+
+Trực quan hóa dữ liệu đã được phân tích trên giao diện Kibana.
+
+- **Truy cập Kibana:** `http://localhost:5601`
+
+- **Tạo Data Views (Index Patterns):**
+    - Vào **Stack Management > Data Views** và tạo 2 data views:
+        1.  **`nginx-*`**: Dành cho log gốc của hệ thống.
+        2.  **`nginx-anomalies*`**: Dành cho kết quả đã được phân tích bởi AI.
+    - *Với mỗi data view, hãy chọn `@timestamp` làm trường thời gian.*
+
 - **Khám phá Dashboard:**
-    - Vào mục **Dashboard**. Bạn có thể import các dashboard đã được thiết kế sẵn hoặc tự tạo mới để khám phá dữ liệu.
+    - Quay lại mục **Dashboard** để bắt đầu xây dựng các biểu đồ.
+    - Để giám sát các cảnh báo an ninh, hãy tạo biểu đồ trên data view `nginx-anomalies*` và áp dụng bộ lọc `is_anomaly is true`.
