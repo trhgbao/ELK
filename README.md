@@ -111,7 +111,7 @@ python3 scripts/log_generator.py
 ```
 *Script này sẽ mô phỏng cả traffic bình thường và các cuộc tấn công. Hãy để nó chạy khoảng 3-5 phút rồi dừng lại bằng `Ctrl + C`.*
 
-***6. Chạy Pipeline AI**
+**6. Chạy Pipeline AI**
 
 Thực thi pipeline để lấy dữ liệu, huấn luyện mô hình và đẩy kết quả phân tích trở lại Elasticsearch.
 
@@ -140,6 +140,8 @@ python -m ipykernel install --user --name="anomaly-detection-venv" --display-nam
 python scripts/push_to_es.py
 ```
 *Sau bước này, index `nginx-anomalies` sẽ được tạo ra, chứa dữ liệu đã được AI gán nhãn.*
+
+
 **7. Khám phá kết quả trên Kibana**
 
 Trực quan hóa dữ liệu đã được phân tích trên giao diện Kibana.
