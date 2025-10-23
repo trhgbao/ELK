@@ -82,7 +82,7 @@ cd project-anomaly-detection
 **2. Tạo và kích hoạt môi trường ảo Python:**
 ```bash
 python3 -m venv .venv
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 **3. Cài đặt các thư viện Python cần thiết:**
@@ -104,7 +104,7 @@ Mở một terminal mới và di chuyển vào thư mục dự án.
 
 ```bash
 # Kích hoạt môi trường ảo
-source venv/bin/activate
+source .venv/bin/activate
 ```bash
 # Chạy script tạo log
 python3 scripts/log_generator.py
