@@ -93,7 +93,7 @@ pip install -r requirements.txt
 **4. Khởi động hệ thống ELK Stack:**
 Lệnh này sẽ build các image cần thiết và khởi động 4 container (elasticsearch, logstash, kibana, nginx) ở chế độ nền.
 ```bash
-docker-compose up -d```
+docker compose up -d```
 *Lưu ý: Lần đầu khởi động có thể mất vài phút để tải các image từ Docker Hub. Hãy chờ đến khi tất cả các service báo "done" hoặc "healthy".*
 ```
 
